@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Timer } from "../components/Timer";
 
+export enum Mode {
+	focus = "focus",
+	break = "break",
+}
+
 export type Config = {
-	minutes: number;
-	seconds: number;
+	focusMinutes: number;
+	focusSeconds: number;
+	breakMinutes: number;
+	breakSeconds: number;
+	mode: Mode;
 };
 
 export const App: React.FC = () => {
+	const [mode, setTimerMode] = useState<Mode>(Mode.focus);
+
+	const toggleMode = (): void => {
+		setTimerMode(
+			(currentState: Mode): Mode =>
+				currentState === Mode.focus ? Mode.break : Mode.focus
+		);
+	};
+
 	const config: Config = {
-		minutes: 1,
-		seconds: 5,
+		focusMinutes: 0,
+		focusSeconds: 10,
+		breakMinutes: 0,
+		breakSeconds: 5,
+		mode: mode,
 	};
 	return (
 		<div className="App">
-			<Timer config={config} />
+			<Timer config={config} toggleMode={toggleMode} />
 		</div>
 	);
 };

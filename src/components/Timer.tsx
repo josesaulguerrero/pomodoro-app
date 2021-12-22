@@ -1,19 +1,31 @@
 import React, { useEffect, useState } from "react";
-import { Config } from "../pages/App";
+import { Config, Mode } from "../pages/App";
 
 type IProps = {
 	config: Config;
+	toggleMode: () => void;
 };
 
 type IState = {
-	timeLeft: Config;
+	timeLeft: {
+		minutes: number;
+		seconds: number;
+	};
 };
 
-export const Timer: React.FC<IProps> = ({ config }) => {
+export const Timer: React.FC<IProps> = ({ config, toggleMode }) => {
 	const [timeLeft, setTimeLeft] = useState<IState["timeLeft"]>({
-		minutes: config.minutes,
-		seconds: config.seconds,
+		minutes: config.focusMinutes,
+		seconds: config.focusSeconds,
 	});
+
+	const updateTimeLeft = () => {
+		setTimeLeft(() =>
+			config.mode === "focus"
+				? { minutes: config.focusMinutes, seconds: config.focusSeconds }
+				: { minutes: config.breakMinutes, seconds: config.breakSeconds }
+		);
+	};
 
 	const formatTime = (timeLeft: IState["timeLeft"]) => {
 		//this function receives the time left and returns an updated object.
@@ -48,6 +60,8 @@ export const Timer: React.FC<IProps> = ({ config }) => {
 		if (timeLeft.minutes === 0 && timeLeft.seconds === 0) {
 			//if the time left is 0, then we should clear the timer.
 			clearInterval(timerID);
+			toggleMode();
+			updateTimeLeft();
 		}
 		return () => {
 			//if the component is unmounted then we should clear the timer.
