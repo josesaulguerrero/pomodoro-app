@@ -1,15 +1,48 @@
 import React, { useEffect, useState } from "react";
+import { Config } from "../pages/App";
 
 type IProps = {
-	milliseconds: number;
+	config: Config;
 };
 
-export const Timer: React.FC<IProps> = ({ milliseconds }) => {
-	const [timeLeft, setTimeLeft] = useState<number>(milliseconds);
+type IState = {
+	timeLeft: Config;
+};
+
+export const Timer: React.FC<IProps> = ({ config }) => {
+	const [timeLeft, setTimeLeft] = useState<IState["timeLeft"]>({
+		minutes: config.minutes,
+		seconds: config.seconds,
+	});
+
+	const formatTime = (timeLeft: IState["timeLeft"]) => {
+		//this function receives the time left and returns an updated object.
+		let seconds = timeLeft.seconds--; //
+		let minutes = timeLeft.minutes;
+		if (seconds === -1) {
+			// the seconds should never be negative, so if it's equal to -1, then:
+			seconds = 59; // seconds is reset to 59
+			minutes--; // and one minute is taken off.
+		}
+		return {
+			minutes,
+			seconds,
+		};
+	};
+
+	const startTimer = (): NodeJS.Timer => {
+		const timerID: NodeJS.Timer = setInterval(() => {
+			setTimeLeft((prevState: IState["timeLeft"]) => {
+				const newTime = formatTime(prevState);
+				return newTime;
+			});
+		}, 1000);
+		return timerID;
+	};
 
 	useEffect(() => {
 		const timerID: NodeJS.Timer = startTimer();
-		if (timeLeft === 0) {
+		if (timeLeft.minutes === 0 && timeLeft.seconds === 0) {
 			clearInterval(timerID);
 		}
 		return () => {
@@ -17,36 +50,17 @@ export const Timer: React.FC<IProps> = ({ milliseconds }) => {
 		};
 	}, [timeLeft]);
 
-	const formatTime = (milliseconds: number): string => {
-		let minutes: number = Math.floor(milliseconds / 1000 / 60);
-		let seconds: number = 0;
-		if (milliseconds / 1000 / 60 !== 0) {
-			seconds = milliseconds / 1000 - minutes * 60;
-		}
-
-		return `${minutes > 10 ? minutes : `0${minutes}`}:${
-			seconds > 10 ? seconds : `0${seconds}`
-		}`;
-	};
-
-	const [formattedTimeLeft, setFormmatedTimeLeft] = useState<string>(
-		formatTime(milliseconds)
-	);
-
-	const startTimer = (): NodeJS.Timer => {
-		const timerID = setInterval(() => {
-			setTimeLeft((prevState) => {
-				const newTime = prevState - 1000;
-				setFormmatedTimeLeft(formatTime(newTime));
-				return newTime;
-			});
-		}, 1000);
-		return timerID;
-	};
-
 	return (
 		<article className="Timer">
-			<div>{formattedTimeLeft}</div>
+			<div>{`${
+				timeLeft.minutes < 10
+					? `0${timeLeft.minutes}`
+					: timeLeft.minutes
+			}:${
+				timeLeft.seconds < 10
+					? `0${timeLeft.seconds}`
+					: timeLeft.seconds
+			}`}</div>
 		</article>
 	);
 };

@@ -1,9 +1,19 @@
 import React from "react";
+import { Timer } from "../components/Timer";
 
-export const App = () => {
+export type Config = {
+	minutes: number;
+	seconds: number;
+};
+
+export const App: React.FC = () => {
+	const config: Config = {
+		minutes: 1,
+		seconds: 5,
+	};
 	return (
 		<div className="App">
-			<header className="App-header"></header>
+			<Timer config={config} />
 		</div>
 	);
 };
