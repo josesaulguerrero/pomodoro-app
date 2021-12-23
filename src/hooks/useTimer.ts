@@ -44,7 +44,9 @@ export const useTimer = (time: Time) => {
 		}
 	}, [timeLeft]);
 
-	useEffect(() => () => clearInterval(timerID as NodeJS.Timer), []);
+	useEffect(() => {
+		return () => clearInterval(timerID as NodeJS.Timer);
+	}, []);
 
 	const formmatedTime = `${minutes < 10 ? `0${minutes}` : minutes}:${
 		seconds < 10 ? `0${seconds}` : seconds
