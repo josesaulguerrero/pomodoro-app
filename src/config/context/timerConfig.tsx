@@ -3,7 +3,7 @@ import { Action } from "../actions/index";
 import { reducer } from "../reducer";
 import { ActionTypes } from "../types";
 
-type Time = {
+export type Time = {
 	minutes: number;
 	seconds: number;
 };
@@ -21,16 +21,16 @@ type TimerContext = {
 
 const defaultConfig: TimerConfig = {
 	Pomodoro: {
-		minutes: 20,
-		seconds: 0,
+		minutes: 0,
+		seconds: 20,
 	},
 	shortBreak: {
-		minutes: 5,
-		seconds: 0,
+		minutes: 0,
+		seconds: 5,
 	},
 	longBreak: {
-		minutes: 10,
-		seconds: 0,
+		minutes: 0,
+		seconds: 10,
 	},
 };
 
