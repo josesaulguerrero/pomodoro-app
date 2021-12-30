@@ -2,7 +2,7 @@
 import { createContext, FC, useReducer } from "react";
 import { Action } from "../actions/index";
 import { reducer } from "../reducer";
-import { ActionTypes } from "../types";
+// import { ActionTypes } from "../types";
 
 export type Time = {
 	minutes: number;

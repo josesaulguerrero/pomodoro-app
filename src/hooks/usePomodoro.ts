@@ -66,7 +66,7 @@ export const usePomodoro = (config: TimerConfig) => {
 			setCurrentMode(Mode.pomodoro);
 			resetCounter();
 		} else if (pomodorosLeft === 0 && currentMode === Mode.pomodoro) {
-			setPomodorosLeft(2);
+			setPomodorosLeft(pomodorosBeforeLongBreak);
 			currentTimer.current = longBreak;
 			setCurrentMode(Mode.longBreak);
 			resetCounter();
