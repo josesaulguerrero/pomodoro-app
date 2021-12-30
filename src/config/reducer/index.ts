@@ -1,8 +1,8 @@
 import { Action } from "../actions/index";
-import { TimerConfig } from "../context/timerConfig";
+import { AppConfig } from "../context/timerConfig";
 
 export const reducer = (
-	state: TimerConfig = null!,
+	state: AppConfig = null!,
 	{ type, payload }: Action
 ) => {
 	switch (type) {
