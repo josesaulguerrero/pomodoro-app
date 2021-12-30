@@ -98,5 +98,6 @@ export const usePomodoro = (config: TimerConfig) => {
 		start,
 		pause,
 		isRunning,
+		currentTimer: currentTimer.current,
 	};
 };

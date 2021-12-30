@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const ProgressBar: FC<Props> = ({ percentage, time }) => {
+	console.log(percentage);
 	return (
 		<Container>
 			<SVG>
