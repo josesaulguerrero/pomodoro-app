@@ -18,6 +18,7 @@ export const SVG = styled.svg`
 	align-items: center;
 	justify-content: center;
 	margin: 0;
+	background-color: aliceblue;
 `;
 
 export const Circle = styled.circle`
