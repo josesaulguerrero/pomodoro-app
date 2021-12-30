@@ -3,6 +3,7 @@
 import { FC, useContext } from "react";
 import { TimerConfigContext } from "../config/context/timerConfig";
 import { usePomodoro } from "../hooks/usePomodoro";
+import { ProgressBar } from "./ProgressBar";
 
 export const Timer: FC = () => {
 	const { config } = useContext(TimerConfigContext);
@@ -21,7 +22,7 @@ export const Timer: FC = () => {
 
 	return (
 		<>
-			<section>{formatTime()}</section>
+			<ProgressBar percentage={50} time={formatTime()} />
 			<button onClick={start} disabled={isRunning}>
 				Start
 			</button>
