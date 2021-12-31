@@ -19,9 +19,6 @@ export const GlobalStyle = createGlobalStyle`
       width: 100%;
       height: 100vh;
       min-height: 600px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       background-color: var(--backgroundColor);
       overflow: hidden;
    }
