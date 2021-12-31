@@ -7,13 +7,21 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    :root {
-      --backgroundColor: #1e2140;
+      --backgroundColor: #1E213F;
+      --darkerBackground: #161932;
+      --lighterBackground: rgba(215, 224, 255, 0.1);
+      --mainColor: #ed6f73;
+      --fontColor: #D7E0FF;
+      --lighterFontColor: #4c4d6b;
    }
 
    body {
       width: 100%;
       height: 100vh;
       min-height: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: var(--backgroundColor);
       overflow: hidden;
    }

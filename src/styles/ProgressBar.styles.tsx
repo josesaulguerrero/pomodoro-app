@@ -8,13 +8,21 @@ export const Container = styled.article`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: lightblue;
+	padding: 15px;
+	background-image: linear-gradient(
+		to right bottom,
+		var(--darkerBackground) 30%,
+		var(--lighterBackground)
+	);
+	box-shadow: -20px -20px 30px #22264d, 30px 30px 40px #131734;
 	border-radius: 50%;
 `;
 
 export const SVG = styled.svg`
-	width: 200px;
-	height: 200px;
+	width: 180px;
+	height: 180px;
+	background-color: var(--darkerBackground);
+	border-radius: 50%;
 	transform: rotate(-90deg);
 `;
 
@@ -27,4 +35,7 @@ export const Time = styled.h2`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-size: 5rem;
+	font-family: sans-serif;
+	color: var(--fontColor);
 `;

@@ -4,12 +4,13 @@ import React from "react";
 import { Timer } from "../components/Timer";
 // styled components
 import { GlobalStyle } from "../styles/global.styles";
+import { StyledApp } from "../styles/App.styles";
 
 export const App: React.FC = () => {
 	return (
-		<div className="App">
+		<StyledApp>
 			<GlobalStyle />
 			<Timer />
-		</div>
+		</StyledApp>
 	);
 };

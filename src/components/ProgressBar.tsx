@@ -9,16 +9,16 @@ type Props = {
 };
 
 export const ProgressBar: FC<Props> = ({ percentage, time }) => {
-	const strokeDashArray = 475;
+	const strokeDashArray = 502;
 	return (
 		<Container>
 			<SVG viewBox="0 0 180 180">
 				<circle
 					cx="90"
 					cy="90"
-					r="75"
+					r="80"
 					fill="none"
-					strokeWidth="5"
+					strokeWidth="7"
 					stroke="rebeccapurple"
 					strokeDasharray={strokeDashArray}
 					strokeDashoffset={
