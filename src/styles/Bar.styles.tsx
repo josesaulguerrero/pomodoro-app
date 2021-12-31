@@ -20,12 +20,12 @@ export const BarItem = styled.article`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: bold;
 	color: var(--lighterFontColor);
 	border-radius: 25px;
 	box-sizing: border-box;
-	transform: all 1s ease;
+	transition: all 0.2s ease;
 	&:not(:last-of-type) {
 		margin-right: 10px;
 	}
