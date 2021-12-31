@@ -36,16 +36,16 @@ export const TimerConfigContext = createContext<TimerContext>(null!);
 const defaultConfig: AppConfig = {
 	Timer: {
 		Pomodoro: {
-			minutes: 20,
+			minutes: 1,
 			seconds: 0,
 		},
 		shortBreak: {
-			minutes: 5,
-			seconds: 0,
+			minutes: 0,
+			seconds: 15,
 		},
 		longBreak: {
-			minutes: 10,
-			seconds: 0,
+			minutes: 0,
+			seconds: 30,
 		},
 		pomodorosBeforeLongBreak: 4,
 	},

@@ -50,6 +50,6 @@ export const Time = styled.h2`
 	align-items: center;
 	justify-content: center;
 	font-size: 5rem;
-	font-family: sans-serif;
+	/* font-family: sans-serif; */
 	color: var(--fontColor);
 `;

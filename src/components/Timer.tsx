@@ -1,28 +1,26 @@
 // libraries and hooks
-import { FC, useEffect, useState } from "react";
-// types
-import { Time as TimeType } from "../config/context/timerConfig";
+import { FC, useContext, useEffect, useState } from "react";
+import { usePomodoro } from "../hooks/usePomodoro";
+// context
+import { TimerConfigContext } from "../config/context/timerConfig";
 // components
 import { ProgressBar } from "./ProgressBar";
 // styled components
 import { Button, Container, Time } from "../styles/Timer.styles";
+import { Bar } from "./Bar";
 
-type Props = {
-	time: TimeType;
-	isRunning: boolean;
-	currentTimer: TimeType;
-	start(): void;
-	pause(): void;
-};
+export const Timer: FC = () => {
+	const { config } = useContext(TimerConfigContext);
 
-export const Timer: FC<Props> = ({
-	time,
-	isRunning,
-	currentTimer,
-	start,
-	pause,
-}) => {
-	const { minutes, seconds } = time;
+	const {
+		time: { minutes, seconds },
+		isRunning,
+		currentTimer,
+		currentMode,
+		start,
+		pause,
+	} = usePomodoro(config.Timer);
+
 	//percentage = (passed time * 100) / total time
 	const [progressPercentage, setProgress] = useState(0);
 
@@ -36,15 +34,14 @@ export const Timer: FC<Props> = ({
 		const newProgress =
 			((minutes * 60 + seconds) * 100) /
 			(currentTimer?.minutes * 60 + currentTimer?.seconds);
-		setProgress(newProgress);
+		setProgress(parseFloat(newProgress.toFixed(1)));
 	}, [minutes, seconds, currentTimer]);
 
 	return (
 		<>
+			<Bar currentMode={currentMode} />
 			<Container>
-				<ProgressBar
-					percentage={parseFloat(progressPercentage.toFixed(5))}
-				/>
+				<ProgressBar percentage={progressPercentage} />
 				<Time>{formatTime()}</Time>
 				<Button onClick={isRunning ? pause : start}>
 					{isRunning ? "PAUSE" : "START"}

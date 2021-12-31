@@ -21,7 +21,7 @@ export const ProgressBar: FC<Props> = ({ percentage }) => {
 				strokeDasharray={strokeDashArray}
 				strokeDashoffset={
 					strokeDashArray - (strokeDashArray * percentage) / 100 ||
-					505
+					strokeDashArray
 				}
 				strokeLinecap="round"
 			></circle>

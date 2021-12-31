@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
       --lighterBackground: rgba(215, 224, 255, 0.1);
       --mainColor: #ed6f73;
       --fontColor: #D7E0FF;
-      --lighterFontColor: #4c4d6b;
+      --lighterFontColor: #7f8096;
    }
 
    body {
@@ -26,5 +26,6 @@ export const GlobalStyle = createGlobalStyle`
    *, *::before, *::after {
       margin: 0;
       padding: 0;
+      font-family: sans-serif;
    }
 `;
