@@ -3,6 +3,7 @@
 import { FC, useContext, useEffect, useState } from "react";
 import { TimerConfigContext } from "../config/context/timerConfig";
 import { usePomodoro } from "../hooks/usePomodoro";
+import { Button, Container, Time } from "../styles/Timer.styles";
 import { ProgressBar } from "./ProgressBar";
 
 export const Timer: FC = () => {
@@ -33,16 +34,15 @@ export const Timer: FC = () => {
 
 	return (
 		<>
-			<ProgressBar
-				percentage={parseFloat(progressPercentage.toFixed(5))}
-				time={formatTime()}
-			/>
-			<button onClick={start} disabled={isRunning}>
-				Start
-			</button>
-			<button onClick={pause} disabled={!isRunning}>
-				Pause
-			</button>
+			<Container>
+				<ProgressBar
+					percentage={parseFloat(progressPercentage.toFixed(5))}
+				/>
+				<Time>{formatTime()}</Time>
+				<Button onClick={isRunning ? pause : start}>
+					{isRunning ? "PAUSE" : "START"}
+				</Button>
+			</Container>
 		</>
 	);
 };
