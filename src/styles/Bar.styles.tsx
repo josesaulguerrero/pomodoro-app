@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const BarContainer = styled.section`
 	width: 300px;
 	height: 50px;
+	min-height: 50px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

@@ -22,7 +22,7 @@ export const Button = styled.button`
 	position: absolute;
 	left: 0;
 	right: 0;
-	bottom: 15%;
+	bottom: 20%;
 	width: 100%;
 	height: 60px;
 	display: flex;
