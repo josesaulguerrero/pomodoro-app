@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Time, TimerConfig } from "../config/context/timerConfig";
 
-enum Mode {
+export enum Mode {
 	pomodoro = "pomodoro",
 	shortBreak = "short break",
 	longBreak = "long break",
@@ -99,5 +99,6 @@ export const usePomodoro = (config: TimerConfig) => {
 		pause,
 		isRunning,
 		currentTimer: currentTimer.current,
+		currentMode,
 	};
 };

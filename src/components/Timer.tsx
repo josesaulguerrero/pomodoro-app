@@ -1,21 +1,28 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { FC, useContext, useEffect, useState } from "react";
-import { TimerConfigContext } from "../config/context/timerConfig";
-import { usePomodoro } from "../hooks/usePomodoro";
-import { Button, Container, Time } from "../styles/Timer.styles";
+// libraries and hooks
+import { FC, useEffect, useState } from "react";
+// types
+import { Time as TimeType } from "../config/context/timerConfig";
+// components
 import { ProgressBar } from "./ProgressBar";
+// styled components
+import { Button, Container, Time } from "../styles/Timer.styles";
 
-export const Timer: FC = () => {
-	const { config } = useContext(TimerConfigContext);
-	const {
-		time: { minutes, seconds },
-		isRunning,
-		currentTimer,
-		start,
-		pause,
-	} = usePomodoro(config.Timer);
+type Props = {
+	time: TimeType;
+	isRunning: boolean;
+	currentTimer: TimeType;
+	start(): void;
+	pause(): void;
+};
 
+export const Timer: FC<Props> = ({
+	time,
+	isRunning,
+	currentTimer,
+	start,
+	pause,
+}) => {
+	const { minutes, seconds } = time;
 	//percentage = (passed time * 100) / total time
 	const [progressPercentage, setProgress] = useState(0);
 
