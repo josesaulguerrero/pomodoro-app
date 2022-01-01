@@ -31,9 +31,13 @@ export const Modal = styled.section`
 	width: 100%;
 	max-width: 400px;
 	height: 100%;
-	max-height: 350px;
+	max-height: 400px;
 	background-color: whitesmoke;
 	border-radius: 15px;
+
+	@media (min-width: 400px) {
+		max-height: 350px;
+	}
 `;
 
 export const ModalHeader = styled.header`

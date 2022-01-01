@@ -23,5 +23,4 @@ export const Wrapper = styled.section`
 	justify-content: center;
 	align-items: center;
 	padding: 60px 40px;
-	border: rebeccapurple 1px solid;
 `;

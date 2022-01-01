@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createContext, FC, useReducer, useState } from "react";
+import { createContext, FC, useEffect, useReducer, useState } from "react";
 
 export type Time = {
 	minutes: number;
@@ -10,7 +10,7 @@ export type TimerConfig = {
 	Pomodoro: Time;
 	shortBreak: Time;
 	longBreak: Time;
-	pomodorosBeforeLongBreak: number;
+	readonly pomodorosBeforeLongBreak: number;
 };
 
 export type StylesConfig = {
@@ -47,17 +47,27 @@ const defaultConfig: AppConfig = {
 		pomodorosBeforeLongBreak: 4,
 	},
 	Styles: {
-		color: "tertiary",
-		font: "tertiary",
+		color: "primary",
+		font: "primary",
 	},
 };
 
 export const TimerConfigContextProvider: FC = ({ children }) => {
-	const [config, setConfig] = useState(defaultConfig);
+	//is there a cached config?
+	const cachedConfig: AppConfig = JSON.parse(
+		window.localStorage.getItem("timerConfig") as string
+	);
+	const [config, setConfig] = useState(
+		cachedConfig ? cachedConfig : defaultConfig
+	);
 
 	const changeConfig = (newConfig: AppConfig) => {
-		//....
+		setConfig(newConfig);
 	};
+
+	useEffect(() => {
+		window.localStorage.setItem("timerConfig", JSON.stringify(config));
+	}, [config]);
 
 	return (
 		<TimerConfigContext.Provider

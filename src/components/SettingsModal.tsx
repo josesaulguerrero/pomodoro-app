@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 // types
 import { AppConfig } from "../context/timerConfig";
 // styled components
@@ -16,7 +16,31 @@ type Props = {
 	changeConfig(newConfig: AppConfig): void;
 };
 
-export const SettingsModal: FC<Props> = ({ setIsOpen }) => {
+export const SettingsModal: FC<Props> = ({ setIsOpen, changeConfig }) => {
+	useEffect(() => {
+		changeConfig({
+			Timer: {
+				Pomodoro: {
+					minutes: 25,
+					seconds: 0,
+				},
+				shortBreak: {
+					minutes: 10,
+					seconds: 0,
+				},
+				longBreak: {
+					minutes: 15,
+					seconds: 0,
+				},
+				pomodorosBeforeLongBreak: 4,
+			},
+			Styles: {
+				color: "tertiary",
+				font: "tertiary",
+			},
+		});
+	}, []);
+
 	return (
 		<ModalOverlay>
 			<Modal>
