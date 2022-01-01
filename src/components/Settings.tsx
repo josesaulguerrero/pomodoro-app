@@ -2,15 +2,8 @@ import { FC, useState } from "react";
 // images
 import SettingsLogo from "../assets/images/settings.svg";
 // styled components
-import {
-	CloseModal,
-	Modal,
-	ModalHeader,
-	ModalOverlay,
-	ModalTitle,
-	OpenModal,
-	SettingsContainer,
-} from "../styles/Settings.styles";
+import { OpenModal, SettingsContainer } from "../styles/Settings.styles";
+import { SettingsModal } from "./SettingsModal";
 
 export const Settings: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,18 +22,7 @@ export const Settings: FC = () => {
 					alt="settings logo"
 				/>
 			</OpenModal>
-			{isOpen && (
-				<ModalOverlay>
-					<Modal>
-						<ModalHeader>
-							<ModalTitle>Settings</ModalTitle>
-							<CloseModal onClick={() => setIsOpen(false)}>
-								&#10799;
-							</CloseModal>
-						</ModalHeader>
-					</Modal>
-				</ModalOverlay>
-			)}
+			{isOpen && <SettingsModal setIsOpen={setIsOpen} />}
 		</SettingsContainer>
 	);
 };
