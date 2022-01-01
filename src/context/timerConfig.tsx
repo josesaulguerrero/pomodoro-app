@@ -66,8 +66,9 @@ export const TimerConfigContextProvider: FC = ({ children }) => {
 	};
 
 	useEffect(() => {
+		setConfig((currentState) => currentState);
 		window.localStorage.setItem("timerConfig", JSON.stringify(config));
-	}, [config]);
+	}, [config, setConfig]);
 
 	return (
 		<TimerConfigContext.Provider

@@ -1,6 +1,6 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useContext, useEffect } from "react";
 // types
-import { AppConfig } from "../context/timerConfig";
+import { TimerConfigContext } from "../context/timerConfig";
 // styled components
 import {
 	CloseModal,
@@ -13,23 +13,23 @@ import {
 
 type Props = {
 	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-	changeConfig(newConfig: AppConfig): void;
 };
 
-export const SettingsModal: FC<Props> = ({ setIsOpen, changeConfig }) => {
+export const SettingsModal: FC<Props> = ({ setIsOpen }) => {
+	const { changeConfig } = useContext(TimerConfigContext);
 	useEffect(() => {
 		changeConfig({
 			Timer: {
 				Pomodoro: {
-					minutes: 25,
+					minutes: 20,
 					seconds: 0,
 				},
 				shortBreak: {
-					minutes: 10,
+					minutes: 5,
 					seconds: 0,
 				},
 				longBreak: {
-					minutes: 15,
+					minutes: 10,
 					seconds: 0,
 				},
 				pomodorosBeforeLongBreak: 4,

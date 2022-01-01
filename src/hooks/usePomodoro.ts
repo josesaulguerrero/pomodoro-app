@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { Time, TimerConfig } from "../context/timerConfig";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Time, TimerConfigContext } from "../context/timerConfig";
 
 export enum Mode {
 	pomodoro = "pomodoro",
@@ -7,9 +7,10 @@ export enum Mode {
 	longBreak = "long break",
 }
 
-export const usePomodoro = (config: TimerConfig) => {
-	const { Pomodoro, longBreak, shortBreak, pomodorosBeforeLongBreak } =
-		config;
+export const usePomodoro = () => {
+	const { config } = useContext(TimerConfigContext);
+	const [times, setTimes] = useState(config.Timer);
+	let { Pomodoro, longBreak, shortBreak, pomodorosBeforeLongBreak } = times;
 	const currentTimer = useRef<Time>(null!);
 	const timerId = useRef<NodeJS.Timer>(null!);
 	const [currentMode, setCurrentMode] = useState<Mode>(null!);
@@ -78,6 +79,7 @@ export const usePomodoro = (config: TimerConfig) => {
 	};
 
 	useEffect(() => {
+		// once the component is mounted
 		selectNextTimer();
 		return () => {
 			clearInterval(timerId.current);
@@ -85,13 +87,28 @@ export const usePomodoro = (config: TimerConfig) => {
 	}, []);
 
 	useEffect(() => {
+		// every second when the timer changes
 		if (
-			counter.minutes === currentTimer.current.minutes &&
+			counter.minutes >= currentTimer.current.minutes &&
 			counter.seconds > currentTimer.current.seconds
 		) {
 			selectNextTimer();
 		}
 	}, [counter]);
+
+	useEffect(() => {
+		//when the timer config changes.
+		setTimes(() => {
+			if (currentMode === Mode.pomodoro) {
+				currentTimer.current = config.Timer.Pomodoro;
+			} else if (currentMode === Mode.shortBreak) {
+				currentTimer.current = config.Timer.shortBreak;
+			} else if (currentMode === Mode.longBreak) {
+				currentTimer.current = config.Timer.longBreak;
+			}
+			return config.Timer;
+		});
+	}, [config]);
 
 	return {
 		time: counter,

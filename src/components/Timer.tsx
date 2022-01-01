@@ -1,5 +1,5 @@
 // libraries and hooks
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { usePomodoro } from "../hooks/usePomodoro";
 // components
 import { Bar } from "./Bar";
@@ -7,20 +7,12 @@ import { ProgressBar } from "./ProgressBar";
 import { Settings } from "./Settings";
 // styled components
 import { Button, Container, Time } from "../styles/Timer.styles";
-// context
-import { TimerConfigContext } from "../context/timerConfig";
 
 export const Timer: FC = () => {
-	const { config, changeConfig } = useContext(TimerConfigContext);
+	const { time, isRunning, currentTimer, currentMode, start, pause } =
+		usePomodoro();
 
-	const {
-		time: { minutes, seconds },
-		isRunning,
-		currentTimer,
-		currentMode,
-		start,
-		pause,
-	} = usePomodoro(config.Timer);
+	const { minutes, seconds } = time;
 
 	//percentage = (passed time * 100) / total time
 	const [progressPercentage, setProgress] = useState(0);
@@ -48,7 +40,7 @@ export const Timer: FC = () => {
 					{isRunning ? "PAUSE" : "START"}
 				</Button>
 			</Container>
-			<Settings changeConfig={changeConfig} />
+			<Settings />
 		</>
 	);
 };

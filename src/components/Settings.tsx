@@ -1,17 +1,11 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 // images
 import SettingsLogo from "../assets/images/settings.svg";
-// types
-import { AppConfig } from "../context/timerConfig";
 // styled components
 import { OpenModal, SettingsContainer } from "../styles/Settings.styles";
 import { SettingsModal } from "./SettingsModal";
 
-type Props = {
-	changeConfig(newConfig: AppConfig): void;
-};
-
-export const Settings: FC<Props> = ({ changeConfig }) => {
+export const Settings: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
@@ -28,12 +22,7 @@ export const Settings: FC<Props> = ({ changeConfig }) => {
 					alt="settings logo"
 				/>
 			</OpenModal>
-			{isOpen && (
-				<SettingsModal
-					setIsOpen={setIsOpen}
-					changeConfig={changeConfig}
-				/>
-			)}
+			{isOpen && <SettingsModal setIsOpen={setIsOpen} />}
 		</SettingsContainer>
 	);
 };
