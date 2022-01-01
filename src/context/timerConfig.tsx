@@ -20,7 +20,7 @@ export type StylesConfig = {
 
 export type AppConfig = {
 	Timer: TimerConfig;
-	Styles?: StylesConfig;
+	Styles: StylesConfig;
 };
 
 type TimerContext = {
@@ -45,6 +45,10 @@ const defaultConfig: AppConfig = {
 			seconds: 0,
 		},
 		pomodorosBeforeLongBreak: 4,
+	},
+	Styles: {
+		color: "primary",
+		font: "primary",
 	},
 };
 
