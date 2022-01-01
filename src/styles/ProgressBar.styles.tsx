@@ -7,6 +7,7 @@ export const SVG = styled.svg`
 	border-radius: 50%;
 	transform: rotate(-90deg);
 	& circle {
+		stroke: var(--mainColor);
 		transition: all 1s ease-in-out;
 	}
 `;

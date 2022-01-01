@@ -60,4 +60,8 @@ export const CloseModal = styled.button`
 	cursor: pointer;
 `;
 
-export const ModalBody = styled.section``;
+export const ModalBody = styled.section`
+	width: 100%;
+	height: 200px;
+	border: red 1px solid;
+`;

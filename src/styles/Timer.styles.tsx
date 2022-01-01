@@ -29,7 +29,7 @@ export const Button = styled.button`
 	justify-content: center;
 	align-items: center;
 	border: none;
-	font-family: sans-serif;
+	/* font-family: sans-serif; */
 	font-weight: bold;
 	font-size: clamp(1rem, 1.1rem, 1.2rem);
 	color: var(--fontColor);

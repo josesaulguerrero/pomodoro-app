@@ -48,7 +48,7 @@ export const Timer: FC = () => {
 					{isRunning ? "PAUSE" : "START"}
 				</Button>
 			</Container>
-			<Settings />
+			<Settings changeConfig={changeConfig} />
 		</>
 	);
 };

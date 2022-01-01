@@ -27,7 +27,7 @@ export const Bar: FC<Props> = ({ currentMode }) => {
 				short break
 			</BarItem>
 			<BarItem
-				data-currentMode={`${
+				data-currentmode={`${
 					currentMode === Mode.longBreak && "current"
 				}`}
 			>

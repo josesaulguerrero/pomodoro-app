@@ -47,8 +47,8 @@ const defaultConfig: AppConfig = {
 		pomodorosBeforeLongBreak: 4,
 	},
 	Styles: {
-		color: "primary",
-		font: "primary",
+		color: "tertiary",
+		font: "tertiary",
 	},
 };
 

@@ -33,6 +33,6 @@ export const BarItem = styled.article`
 
 	&[data-currentmode="current"] {
 		color: var(--darkerBackground);
-		background-color: rebeccapurple;
+		background-color: var(--mainColor);
 	}
 `;
