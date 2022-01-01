@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { TimerConfigContextProvider } from "./config/context/timerConfig";
+import { TimerConfigContextProvider } from "./context/timerConfig";
 import { App } from "./pages/App";
 
 ReactDOM.render(

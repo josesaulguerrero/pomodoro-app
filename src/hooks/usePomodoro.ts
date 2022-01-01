@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Time, TimerConfig } from "../config/context/timerConfig";
+import { Time, TimerConfig } from "../context/timerConfig";
 
 export enum Mode {
 	pomodoro = "pomodoro",

@@ -3,11 +3,14 @@ import { FC, useState } from "react";
 import SettingsLogo from "../assets/images/settings.svg";
 // styled components
 import {
+	CloseModal,
 	Modal,
+	ModalHeader,
 	ModalOverlay,
+	ModalTitle,
 	OpenModal,
 	SettingsContainer,
-} from "../styles/Settings";
+} from "../styles/Settings.styles";
 
 export const Settings: FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +32,12 @@ export const Settings: FC = () => {
 			{isOpen && (
 				<ModalOverlay>
 					<Modal>
-						<button onClick={() => setIsOpen(false)}>
-							&#10799;
-						</button>
+						<ModalHeader>
+							<ModalTitle>Settings</ModalTitle>
+							<CloseModal onClick={() => setIsOpen(false)}>
+								&#10799;
+							</CloseModal>
+						</ModalHeader>
 					</Modal>
 				</ModalOverlay>
 			)}

@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createContext, FC, useReducer } from "react";
-import { Action } from "../actions/index";
-import { reducer } from "../reducer";
-// import { ActionTypes } from "../types";
+import { createContext, FC, useReducer, useState } from "react";
 
 export type Time = {
 	minutes: number;
@@ -28,7 +25,7 @@ export type AppConfig = {
 
 type TimerContext = {
 	config: AppConfig;
-	dispatch: React.Dispatch<Action>;
+	changeConfig(newConfig: AppConfig): void;
 };
 
 export const TimerConfigContext = createContext<TimerContext>(null!);
@@ -52,13 +49,17 @@ const defaultConfig: AppConfig = {
 };
 
 export const TimerConfigContextProvider: FC = ({ children }) => {
-	const [config, dispatch] = useReducer(reducer, defaultConfig);
+	const [config, setConfig] = useState(defaultConfig);
+
+	const changeConfig = (newConfig: AppConfig) => {
+		//....
+	};
 
 	return (
 		<TimerConfigContext.Provider
 			value={{
 				config,
-				dispatch,
+				changeConfig,
 			}}
 		>
 			{children}

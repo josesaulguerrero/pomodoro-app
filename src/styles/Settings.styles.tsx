@@ -5,12 +5,20 @@ export const SettingsContainer = styled.section`
 `;
 
 export const OpenModal = styled.button`
-	width: fit-content;
-	height: fit-content;
+	width: 40px;
+	height: 40px;
 	border: none;
 	outline: none;
 	background-color: transparent;
 	cursor: pointer;
+	transform-origin: center center;
+	transition: transform 0.5s ease-in;
+
+	@media (hover: hover) {
+		&:hover {
+			transform: rotateZ(180deg);
+		}
+	}
 `;
 
 const FadeIn = keyframes`
@@ -44,7 +52,33 @@ export const Modal = styled.section`
 	width: 100%;
 	max-width: 400px;
 	height: 100%;
-	max-height: 450px;
+	max-height: 350px;
 	background-color: whitesmoke;
 	border-radius: 15px;
 `;
+
+export const ModalHeader = styled.header`
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom: 1px solid #e1dada;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px;
+`;
+
+export const ModalTitle = styled.h3`
+	font-size: 2rem;
+`;
+
+export const CloseModal = styled.button`
+	width: 30px;
+	height: 30px;
+	border: none;
+	outline: none;
+	font-size: 2rem;
+	background-color: transparent;
+	cursor: pointer;
+`;
+
+export const ModalBody = styled.section``;
