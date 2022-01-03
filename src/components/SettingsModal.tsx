@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import React, { FC, useContext, useEffect, useRef, useState } from "react";
+import React, { FC, useContext, useRef, useState } from "react";
 // types
-import { Time, TimerConfigContext } from "../context/timerConfig";
+import { TimerConfigContext } from "../context/timerConfig";
 // styled components
 import {
 	CloseModal,
@@ -14,6 +14,7 @@ import {
 	ModalOverlay,
 	ModalTitle,
 	NumberInput,
+	TimeSection,
 } from "../styles/SettingsModal.styles";
 import { CheckedTick } from "./CheckedTick";
 
@@ -83,41 +84,46 @@ export const SettingsModal: FC<Props> = ({ setIsOpen }) => {
 					</CloseModal>
 				</ModalHeader>
 				<ModalBody onSubmit={onSubmit}>
-					<Label>
-						Pomodoro
-						<NumberInput
-							name={inputNames.pomodoro}
-							type="number"
-							min="20"
-							max="35"
-							defaultValue={Timer.Pomodoro.minutes}
-							onChange={handleOnChange}
-						/>
-					</Label>
-					<Label>
-						Short Break
-						<NumberInput
-							name={inputNames.shortBreak}
-							type="number"
-							min="5"
-							max="10"
-							defaultValue={Timer.shortBreak.minutes}
-							onChange={handleOnChange}
-						/>
-					</Label>
-					<Label>
-						Long Break
-						<NumberInput
-							name={inputNames.longBreak}
-							type="number"
-							min="10"
-							max="20"
-							defaultValue={Timer.longBreak.minutes}
-							onChange={handleOnChange}
-						/>
-					</Label>
+					<TimeSection>
+						<h5>TIME (MINUTES)</h5>
+						<section>
+							<Label>
+								Pomodoro
+								<NumberInput
+									name={inputNames.pomodoro}
+									type="number"
+									min="20"
+									max="35"
+									defaultValue={Timer.Pomodoro.minutes}
+									onChange={handleOnChange}
+								/>
+							</Label>
+							<Label>
+								Short Break
+								<NumberInput
+									name={inputNames.shortBreak}
+									type="number"
+									min="5"
+									max="10"
+									defaultValue={Timer.shortBreak.minutes}
+									onChange={handleOnChange}
+								/>
+							</Label>
+							<Label>
+								Long Break
+								<NumberInput
+									name={inputNames.longBreak}
+									type="number"
+									min="10"
+									max="20"
+									defaultValue={Timer.longBreak.minutes}
+									onChange={handleOnChange}
+								/>
+							</Label>
+						</section>
+					</TimeSection>
 					<section>
-						<h5>Font</h5>
+						<h5>FONT</h5>
 						<FontType
 							type="button"
 							data-current={
@@ -150,7 +156,7 @@ export const SettingsModal: FC<Props> = ({ setIsOpen }) => {
 						</FontType>
 					</section>
 					<section>
-						<h5>Color</h5>
+						<h5>COLOR</h5>
 						<ColorType
 							type="button"
 							data-option="first"

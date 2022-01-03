@@ -63,22 +63,72 @@ export const CloseModal = styled.button`
 	background-color: transparent;
 	cursor: pointer;
 `;
-
 export const ModalBody = styled.form`
 	width: 100%;
 	height: 200px;
 	border: red 1px solid;
+
+	& h5 {
+		font-size: clamp(1.1rem, 1.2rem, 1.3rem);
+	}
+`;
+
+export const TimeSection = styled.section`
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 20px;
+
+	& > section {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 10px;
+	}
+
+	@media screen and (min-width: 400px) {
+		align-items: flex-start;
+		& > section {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
 `;
 
 export const Label = styled.label`
 	width: 100%;
-	display: block;
-	border: blue solid 1px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--lighterFontColor);
+	font-weight: bold;
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+
+	@media screen and (min-width: 400px) {
+		flex: 1;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-bottom: 0;
+	}
 `;
 
 export const NumberInput = styled.input`
-	width: 50px;
-	border: red 1px solid;
+	width: 90px;
+	max-width: 90px;
+	border: none;
+	padding: 5px;
+	box-sizing: border-box;
+	background-color: #c6dbfab1;
+	border-radius: 5px;
+	font-weight: bold;
 `;
 
 export const FontType = styled.button`
