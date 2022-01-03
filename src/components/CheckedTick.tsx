@@ -5,8 +5,8 @@ export const CheckedTick: FC = () => {
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			version="1.0"
-			width="20"
-			height="20"
+			width="15"
+			height="15"
 			viewBox="0 0 512.000000 512.000000"
 			preserveAspectRatio="xMidYMid meet"
 		>

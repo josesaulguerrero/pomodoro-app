@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 const FadeIn = keyframes`
 	from {
@@ -31,12 +31,12 @@ export const Modal = styled.section`
 	width: 100%;
 	max-width: 400px;
 	height: 100%;
-	max-height: 400px;
+	max-height: 420px;
 	background-color: whitesmoke;
 	border-radius: 15px;
 
 	@media (min-width: 400px) {
-		max-height: 350px;
+		max-height: 320px;
 	}
 `;
 
@@ -65,8 +65,8 @@ export const CloseModal = styled.button`
 `;
 export const ModalBody = styled.form`
 	width: 100%;
-	height: 200px;
-	border: red 1px solid;
+	height: calc(100% - 71px);
+	position: relative;
 
 	& h5 {
 		font-size: clamp(1.1rem, 1.2rem, 1.3rem);
@@ -126,14 +126,56 @@ export const NumberInput = styled.input`
 	border: none;
 	padding: 5px;
 	box-sizing: border-box;
-	background-color: #c6dbfab1;
+	background-color: var(--lightGray);
 	border-radius: 5px;
 	font-weight: bold;
+
+	&:focus {
+		outline: 2px solid var(--backgroundColor);
+	}
+`;
+
+// these styles are shared by FontSection and ColorSection:
+const sharedStyles = css`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 20px 15px;
+
+	& > section {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 10px;
+	}
+
+	@media screen and (min-width: 400px) {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+
+		& > section {
+			margin-top: 0px;
+		}
+	}
+`;
+
+export const FontSection = styled.section`
+	${sharedStyles}
 `;
 
 export const FontType = styled.button`
-	font-size: 2rem;
-	background-color: gray;
+	width: 30px;
+	height: 30px;
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: var(--lighterFontColor);
+	border: none;
+	background-color: var(--lightGray);
+	border-radius: 50%;
+	transition: all 0.3s ease-in-out;
 	&[data-option="first"] {
 		font-family: var(--primaryFont);
 	}
@@ -144,11 +186,27 @@ export const FontType = styled.button`
 		font-family: var(--tertiaryFont);
 	}
 	&[data-current="true"] {
-		background-color: red;
+		background-color: var(--backgroundColor);
+		color: var(--fontColor);
+	}
+
+	&:not(:last-of-type) {
+		margin-right: 10px;
 	}
 `;
 
+export const ColorSection = styled.section`
+	${sharedStyles}
+`;
+
 export const ColorType = styled.button`
+	width: 30px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	border-radius: 50%;
 	svg {
 		opacity: 0;
 		transition: opacity 0.1s ease-in-out;
@@ -164,5 +222,30 @@ export const ColorType = styled.button`
 	}
 	&[data-current="true"] svg {
 		opacity: 1;
+	}
+
+	&:not(:last-of-type) {
+		margin-right: 10px;
+	}
+`;
+
+export const Submit = styled.button`
+	position: absolute;
+	top: calc(100% - 20px);
+	left: calc(50% - 50px);
+	width: 100px;
+	height: 40px;
+	border: none;
+	font-weight: bold;
+	background-color: var(--mainColor);
+	border-radius: 20px;
+	will-change: transform;
+	transition: transform 0.3s ease-in-out;
+	cursor: pointer;
+
+	@media (hover: hover) {
+		&:hover {
+			transform: scale(1.1);
+		}
 	}
 `;

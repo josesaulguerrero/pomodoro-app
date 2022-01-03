@@ -5,7 +5,9 @@ import { TimerConfigContext } from "../context/timerConfig";
 // styled components
 import {
 	CloseModal,
+	ColorSection,
 	ColorType,
+	FontSection,
 	FontType,
 	Label,
 	Modal,
@@ -14,6 +16,7 @@ import {
 	ModalOverlay,
 	ModalTitle,
 	NumberInput,
+	Submit,
 	TimeSection,
 } from "../styles/SettingsModal.styles";
 import { CheckedTick } from "./CheckedTick";
@@ -122,73 +125,77 @@ export const SettingsModal: FC<Props> = ({ setIsOpen }) => {
 							</Label>
 						</section>
 					</TimeSection>
-					<section>
+					<FontSection>
 						<h5>FONT</h5>
-						<FontType
-							type="button"
-							data-current={
-								StylesConfig.font === "primary" && "true"
-							}
-							data-option="first"
-							onClick={() => onPickFont("primary")}
-						>
-							Aa
-						</FontType>
-						<FontType
-							type="button"
-							data-current={
-								StylesConfig.font === "secondary" && "true"
-							}
-							data-option="second"
-							onClick={() => onPickFont("secondary")}
-						>
-							Aa
-						</FontType>
-						<FontType
-							type="button"
-							data-current={
-								StylesConfig.font === "tertiary" && "true"
-							}
-							data-option="third"
-							onClick={() => onPickFont("tertiary")}
-						>
-							Aa
-						</FontType>
-					</section>
-					<section>
+						<section>
+							<FontType
+								type="button"
+								data-current={
+									StylesConfig.font === "primary" && "true"
+								}
+								data-option="first"
+								onClick={() => onPickFont("primary")}
+							>
+								Aa
+							</FontType>
+							<FontType
+								type="button"
+								data-current={
+									StylesConfig.font === "secondary" && "true"
+								}
+								data-option="second"
+								onClick={() => onPickFont("secondary")}
+							>
+								Aa
+							</FontType>
+							<FontType
+								type="button"
+								data-current={
+									StylesConfig.font === "tertiary" && "true"
+								}
+								data-option="third"
+								onClick={() => onPickFont("tertiary")}
+							>
+								Aa
+							</FontType>
+						</section>
+					</FontSection>
+					<ColorSection>
 						<h5>COLOR</h5>
-						<ColorType
-							type="button"
-							data-option="first"
-							data-current={
-								StylesConfig.color === "primary" && "true"
-							}
-							onClick={() => onPickColor("primary")}
-						>
-							<CheckedTick />
-						</ColorType>
-						<ColorType
-							type="button"
-							data-option="second"
-							data-current={
-								StylesConfig.color === "secondary" && "true"
-							}
-							onClick={() => onPickColor("secondary")}
-						>
-							<CheckedTick />
-						</ColorType>
-						<ColorType
-							type="button"
-							data-option="third"
-							data-current={
-								StylesConfig.color === "tertiary" && "true"
-							}
-							onClick={() => onPickColor("tertiary")}
-						>
-							<CheckedTick />
-						</ColorType>
-					</section>
-					<button type="submit">Apply</button>
+						<section>
+							<ColorType
+								type="button"
+								data-option="first"
+								data-current={
+									StylesConfig.color === "primary" && "true"
+								}
+								onClick={() => onPickColor("primary")}
+							>
+								<CheckedTick />
+							</ColorType>
+							<ColorType
+								type="button"
+								data-option="second"
+								data-current={
+									StylesConfig.color === "secondary" && "true"
+								}
+								onClick={() => onPickColor("secondary")}
+							>
+								<CheckedTick />
+							</ColorType>
+							<ColorType
+								type="button"
+								data-option="third"
+								data-current={
+									StylesConfig.color === "tertiary" && "true"
+								}
+								onClick={() => onPickColor("tertiary")}
+							>
+								<CheckedTick />
+							</ColorType>
+						</section>
+					</ColorSection>
+					<Submit type="submit">Apply</Submit>
 				</ModalBody>
 			</Modal>
 		</ModalOverlay>

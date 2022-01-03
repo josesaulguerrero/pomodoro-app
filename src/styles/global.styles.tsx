@@ -54,6 +54,7 @@ export const GlobalStyle = createGlobalStyle`
       --fontFamily: ${(props: StyleProps) => pickFont(props.FontVariant)};
       --fontColor: #D7E0FF;
       --lighterFontColor: #7f8096;
+      --lightGray: #c6dbfab1;
    }
 
    body {
@@ -69,5 +70,9 @@ export const GlobalStyle = createGlobalStyle`
       padding: 0;
       font-family: var(--fontFamily);
       box-sizing: border-box;
+   }
+
+   button {
+      cursor: pointer;
    }
 `;
