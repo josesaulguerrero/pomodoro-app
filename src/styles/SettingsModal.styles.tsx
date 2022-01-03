@@ -64,8 +64,55 @@ export const CloseModal = styled.button`
 	cursor: pointer;
 `;
 
-export const ModalBody = styled.section`
+export const ModalBody = styled.form`
 	width: 100%;
 	height: 200px;
 	border: red 1px solid;
+`;
+
+export const Label = styled.label`
+	width: 100%;
+	display: block;
+	border: blue solid 1px;
+`;
+
+export const NumberInput = styled.input`
+	width: 50px;
+	border: red 1px solid;
+`;
+
+export const FontType = styled.button`
+	font-size: 2rem;
+	background-color: gray;
+	&[data-option="first"] {
+		font-family: var(--primaryFont);
+	}
+	&[data-option="second"] {
+		font-family: var(--secondaryFont);
+	}
+	&[data-option="third"] {
+		font-family: var(--tertiaryFont);
+	}
+	&[data-current="true"] {
+		background-color: red;
+	}
+`;
+
+export const ColorType = styled.button`
+	svg {
+		opacity: 0;
+		transition: opacity 0.1s ease-in-out;
+	}
+	&[data-option="first"] {
+		background-color: var(--primaryColor);
+	}
+	&[data-option="second"] {
+		background-color: var(--secondaryColor);
+	}
+	&[data-option="third"] {
+		background-color: var(--tertiaryColor);
+	}
+	&[data-current="true"] svg {
+		opacity: 1;
+	}
 `;
