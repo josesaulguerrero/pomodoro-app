@@ -11,21 +11,21 @@ import { createGlobalStyle } from "styled-components";
 
 const pickColor = (variant: string) => {
 	if (variant === "primary") {
-		return "hsl(0, 91%, 71%)";
+		return "var(--primaryColor)";
 	} else if (variant === "secondary") {
-		return "#70F3F8";
+		return "var(--secondaryColor)";
 	} else {
-		return "#D881F8";
+		return "var(--tertiaryColor)";
 	}
 };
 
 const pickFont = (variant: string) => {
 	if (variant === "primary") {
-		return "'Kumbh Sans', sans-serif";
+		return "var(--primaryFont)";
 	} else if (variant === "secondary") {
-		return "'Roboto Slab', serif";
+		return "var(--secondaryFont)";
 	} else {
-		return "'Space Mono', monospace";
+		return "var(--tertiaryFont)";
 	}
 };
 
@@ -44,7 +44,13 @@ export const GlobalStyle = createGlobalStyle`
       --backgroundColor: #1E213F;
       --darkerBackground: #161932;
       --lighterBackground: rgba(215, 224, 255, 0.1);
+      --primaryColor: hsl(0, 91%, 71%);
+      --secondaryColor: #70F3F8;
+      --tertiaryColor: #D881F8;
       --mainColor: ${(props: StyleProps) => pickColor(props.ColorVariant)};
+      --primaryFont: 'Kumbh Sans', sans-serif;
+      --secondaryFont:'Roboto Slab', serif;
+      --tertiaryFont: 'Space Mono', monospace;
       --fontFamily: ${(props: StyleProps) => pickFont(props.FontVariant)};
       --fontColor: #D7E0FF;
       --lighterFontColor: #7f8096;
