@@ -27,11 +27,11 @@ export const usePomodoro = () => {
 	const start = (): void => {
 		const intervalID = setInterval(() => {
 			setCounter((currentCounter) => {
-				let seconds = currentCounter.seconds++;
+				let seconds = currentCounter.seconds + 1;
 				let minutes = currentCounter.minutes;
 				if (seconds === 60) {
 					seconds = 0;
-					minutes++;
+					minutes += 1;
 				}
 				return {
 					minutes,
