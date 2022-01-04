@@ -1,46 +1,107 @@
-# Getting Started with Create React App
+# Pomodoro Timer Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Pomodoro app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G). This Pomodoro app provided some tricky challenges, including building a circular progress bar and a range of customizations, like colors and fonts.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+-   [Overview](#overview)
+-   [The challenge](#the-challenge)
+-   [Screenshot](#screenshot)
+-   [Links](#links)
+-   [My process](#my-process)
+-   [Built with](#built-with)
+-   [What I learned](#what-i-learned)
+-   [Continued development](#continued-development)
+-   [Useful resources](#useful-resources)
+-   [How to run the project](#how-to-run-the-project)
+-   [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+-   Set a Pomodoro timer and short & long break timers.
+-   Customize how long each timer runs for.
+-   See a circular progress bar that updates every minute and represents how far through their timer they are.
+-   Customize the appearance of the app with the ability to set preferences for colors and fonts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![screenshoot](https://i.postimg.cc/NFWssg5Z/Pomodoro-Timer.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   [Solution URL](https://github.com/josesaulguerrero/pomodoro-app)
+-   [Live site URL ](https://my-pomodoro-app.netlify.app/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   Semantic HTML5 markup
+-   CSS custom properties
+-   Flexbox
+-   CSS Grid
+-   Mobile-first workflow
+-   [Yarn](https://yarnpkg.com/) - Node package manager
+-   [create-react-app](https://create-react-app.dev/docs/) - To create a React setup ready to run.
+-   [React](https://reactjs.org/) - JS library
+-   [TypeScript](https://www.typescriptlang.org/docs/) - To type my components and avoid production bugs.
+-   [Styled Components](https://styled-components.com/) - For styles
+-   [Workbox](https://developers.google.com/web/tools/workbox/guides/get-started) - For managing the cache and service workers
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Building this project helped me learn to use and improve my knowledge of some React and JS tools, such as:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   Styled components and sharing styles.
+-   Using TS features in a React project and typing my components.
+-   Creating a custom hook that helped me manage my pomodoro timer.
+-   Using the context api to save the timer configuration in one place.
+-   UseEffect, it was really helpful when I needed to update my states and configuration.
+-   Managing my service workers with Workbox.
+-   Creating customizable SVGs.
+-   Using Styled-components to change my css variables/custom properties every time the user changes the configuration.
 
-## Learn More
+### Continued development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   TypeScript is a really nice super set of JS that introduces lots of cool features that helped me make my React code much safer, which leads to less room for bugs.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   The react context api was a very helpful tool, handling my global state (the timer configuration) couldn't have been easier.
+
+-   Updating the timer and the circular progress bar every time the user changes the configuration was a really hard task since I consumed this information in many components, but using the useEffect hook made this task much easier.
+
+-   Webpack helped me start a development environment with DevServer and create bundles of code which are optimized for a production environment.
+
+-   To manage my service workers, I used Workbox, a set of libraries that google provides to help you covert your apps into PWAs that can be installed like a native app and work even when offline.
+
+-   I used styled components, an amazing CSS-in-JS library that lets you use all the JS features to easily write your style rules.
+
+-   Implemented the `@media (hover: hover) {}` CSS media query, which is used to detect if the user's device has a cursor, to add hover transitions.
+
+### Useful resources
+
+-   [Basic use of TypeScript with React](https://www.youtube.com/watch?v=jrKcJxF0lAU) - I found this video very interesting because it teaches you how you can use TS in your react projects to avoid getting bugs by simply typing your components, props, state, etc.
+
+-   [Basic knowledge on SVGs](https://www.youtube.com/watch?v=ZJSCl6XEdP8) - This playlist by Kevin Powell was really handy when I was trying to figure out how I could create customizable SVGs.
+
+-   [How to create a circular progress bar using CSS and SVGs](https://www.youtube.com/watch?v=mSfsGTIQlxg&t=531s&ab_channel=EasyTutorials) - This video was REALLY helpful to find out How I could create a circular progress bar.
+
+-   [Using the `css` feature that comes with styled-components to create mixins and share styles](https://styled-components.com/docs/api#css) - In one specific component I really needed to share some CSS rules and it was relieving to find out you can actually create mixins with styled-components!
+
+-   [How to integrate Workbox in your React App](https://www.youtube.com/watch?v=uKNLaleXztc&list=PLD8nQCAhR3tTXYOhau-RTfZQ4uGvco7XQ&ab_channel=ImranSayed-CodeytekAcademy) - These videos were really helpful as they helped me integrate all the workbox libraries into my existing application.
+
+## How to run the project
+
+1. You need to have NodeJS, NPM and Yarn installed in your computer. Follow these instructions to install Node and NPM: (Windows and Mac) [NodeJS](https://nodejs.org/en/download/) or (Linux) [NVM](https://github.com/nvm-sh/nvm). After you're done with the previous step, go to your terminal and install Yarn: `npm install -g yarn`
+
+2. Then you would need to install the necessary dependencies for this project, you can do it by running: `yarn install`
+
+3. Finally open the project folder on your terminal and run: `yarn start` and you're ready to go, it will open the development environment.
+
+## Author
+
+-   Website - [Jose Saúl Guerrero Serrano](https://joseguerreroserrano.netlify.app/)
+-   Github - [@josesaulguerrero](https://github.com/josesaulguerrero)
